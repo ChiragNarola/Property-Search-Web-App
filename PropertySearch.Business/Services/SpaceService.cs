@@ -56,6 +56,11 @@ namespace PropertySearch.Business.Services
             var qry = await _unitOfWork.Repository<Space>().Query().AverageAsync(x=>x.Size);
             return qry;
         }
+        public async Task<int> GetTotalSpace()
+        {
+            var qry = await _unitOfWork.Repository<Space>().Query().CountAsync();
+            return qry;
+        }
 
     }
 }

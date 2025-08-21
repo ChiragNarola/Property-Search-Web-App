@@ -16,5 +16,7 @@ namespace PropertySearch.Business.Services.Interfaces
         Task<PagedResultDTO<PropertyDTO>> ListAsync(PagedRM<PropertyFilter> request);
         Task<PropertyDTO> GetByIdAsync(int id);
         Task<PropertyDTO> CreateAsync(CreatePropertyRequest request);
+        Task<int> GetTotalPropertyAsync();
+        Task<decimal> GetAvgropertyAsync();
     }
 }

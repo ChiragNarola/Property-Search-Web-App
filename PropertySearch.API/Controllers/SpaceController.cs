@@ -42,5 +42,18 @@ namespace PropertySearch.API.Controllers
             var avgspacesize = await _spaceService.GetAvgSpaceSize();
             return Ok(PropertySearchResultDTO<double>.Success(avgspacesize));
         }
+
+        [HttpGet("totalspace")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetTotalSpaceAsync()
+        {
+            var totalspace = await _spaceService.GetTotalSpace();
+            return Ok(PropertySearchResultDTO<int>.Success(totalspace));
+        }
     }
 }

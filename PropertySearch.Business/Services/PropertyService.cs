@@ -98,5 +98,15 @@ namespace PropertySearch.Business.Services
 
             return _mapper.Map<PropertyDTO>(property);
         }
+        public async Task<int> GetTotalPropertyAsync()
+        {
+            var qry = await _unitOfWork.Repository<Property>().Query().CountAsync();
+            return qry;
+        }
+        public async Task<decimal> GetAvgropertyAsync()
+        {
+            var qry = await _unitOfWork.Repository<Property>().Query().AverageAsync(x => x.Price);
+            return qry;
+        }
     }
 }

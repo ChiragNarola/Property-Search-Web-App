@@ -6,6 +6,7 @@ using PropertySearch.Business.Models.DTOs;
 using PropertySearch.Business.Models.DTOs.PageSort;
 using PropertySearch.Business.Models.RMs;
 using PropertySearch.Business.Models.RMs.PageSort;
+using PropertySearch.Business.Services;
 using PropertySearch.Business.Services.Interfaces;
 
 namespace PropertySearch.API.Controllers
@@ -55,6 +56,31 @@ namespace PropertySearch.API.Controllers
         {
             await _propertyService.CreateAsync(request);
             return Ok(PropertySearchResultDTO.Success());
+        }
+
+        [HttpGet("totalproperty")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetTotalSpaceAsync()
+        {
+            var totalproperty = await _propertyService.GetTotalPropertyAsync();
+            return Ok(PropertySearchResultDTO<int>.Success(totalproperty));
+        }
+        [HttpGet("avgproperty")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAvgropertyAsync()
+        {
+            var avgproperty = await _propertyService.GetAvgropertyAsync();
+            return Ok(PropertySearchResultDTO<decimal>.Success(avgproperty));
         }
     }
 }

@@ -14,5 +14,6 @@ namespace PropertySearch.Business.Services.Interfaces
     {
         Task<PagedResultDTO<SpaceDTO>> ListAsync(PagedRM<SpaceFilter> request);
         Task<double> GetAvgSpaceSize();
+        Task<int> GetTotalSpace();
     }
 }
