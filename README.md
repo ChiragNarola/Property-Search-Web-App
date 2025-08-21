@@ -43,7 +43,7 @@ hearth-search-backend/
 
 Setup & Run Instructions
 1. Clone & Install
-git clone [https://github.com/ChiragNarola/hearth-search.git](https://github.com/ChiragNarola/Property-Search-Web-App.git)](https://github.com/ChiragNarola/Property-Search-Web-App.git)
+git clone https://github.com/ChiragNarola/Property-Search-Web-App
 dotnet restore
 
 2. Configure Environment
